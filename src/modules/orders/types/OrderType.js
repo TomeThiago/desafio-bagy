@@ -1,17 +1,17 @@
-import { 
+const {
   GraphQLFloat,
   GraphQLInt,
   GraphQLList,
   GraphQLNonNull,
   GraphQLObjectType,
   GraphQLString,
-} from "graphql";
+} = require("graphql");
 
-import { GraphQLDate } from 'graphql-iso-date';
+const { GraphQLDate } = require('graphql-iso-date');
 
-import ItemsType from '../../items/types/ItemsType';
+const ItemsType = require('../types/ItemsType');
 
-export default new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
   name: 'OrderType',
   fields: {
     id: {
@@ -32,8 +32,8 @@ export default new GraphQLObjectType({
     status: {
       type: new GraphQLNonNull(GraphQLString),
     },
-    itens: { 
-      type: new GraphQLList(ItemsType) 
+    itens: {
+      type: new GraphQLList(ItemsType)
     }
   },
 });

@@ -1,11 +1,12 @@
-import 'dotenv/config';
-import { ApolloServer } from 'apollo-server';
+require('dotenv/config');
 
-import schema from './schema';
+const { ApolloServer } = require('apollo-server');
+
+const schema = require('./schema');
 
 const server = new ApolloServer({
   schema,
   playground: process.env.NODE_ENV === "development",
 });
 
-export default server;
+module.exports = server;

@@ -1,11 +1,9 @@
-import { clientQueries } from './clients';
-import { productQueries } from './products';
-import { ordersQueries } from './orders';
-import { itemsQueries } from './items';
+const { clientQueries } = require('./clients');
+const { productQueries } = require('./products');
+const { ordersQueries } = require('./orders');
 
-export default {
+module.exports = {
   ...clientQueries,
   ...productQueries,
   ...ordersQueries,
-  ...itemsQueries,
 };

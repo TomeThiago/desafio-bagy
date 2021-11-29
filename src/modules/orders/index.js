@@ -1,18 +1,18 @@
-import {
+const {
   GraphQLString,
   GraphQLInt,
   GraphQLList,
   GraphQLInputObjectType,
   GraphQLFloat,
-} from 'graphql';
+} = require('graphql');
 
-import { GraphQLDate } from 'graphql-iso-date';
+const { GraphQLDate } = require('graphql-iso-date');
 
-import OrderType from './types/OrderType';
+const OrderType = require('./types/OrderType');
 
-import { getOrders, saveOrder } from './OrderLoader';
+const { getOrders, saveOrder } = require('./OrderLoader');
 
-export const ordersQueries = {
+const ordersQueries = {
   orders: {
     type: new GraphQLList(OrderType),
     resolve: getOrders,
@@ -24,7 +24,7 @@ export const ordersQueries = {
   }
 };
 
-export const ordersMutations = {
+const ordersMutations = {
   saveOrder: {
     type: OrderType,
     resolve: saveOrder,
@@ -72,3 +72,5 @@ export const ordersMutations = {
     }
   }
 }
+
+module.exports = { ordersQueries, ordersMutations };

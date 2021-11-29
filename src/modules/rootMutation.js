@@ -1,11 +1,9 @@
-import { clientMutations } from './clients';
-import { productMutations } from './products';
-import { ordersMutations } from './orders';
-import { itemsMutations } from './items';
+const { clientMutations } = require('./clients');
+const { productMutations } = require('./products');
+const { ordersMutations } = require('./orders');
 
-export default {
+module.exports = {
   ...clientMutations,
   ...productMutations,
   ...ordersMutations,
-  ...itemsMutations,
 };

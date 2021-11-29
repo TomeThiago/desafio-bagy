@@ -1,25 +1,16 @@
-import { connectionDB } from '../../prisma';
+const { createClientService } = require('./services/CreateClientService');
+const { listClientsService } = require('./services/ListClientsService');
 
-export async function getClients() {
-  const clients = await connectionDB.clientes.findMany();
+async function getClients() {
+  const clients = await listClientsService();
 
   return clients;
 }
 
-export async function saveClient(_, { input }) {
-  const cpfExist = await connectionDB.clientes.findFirst({
-    where: {
-      cpf: input.cpf
-    }
-  });
-
-  if(cpfExist) {
-    throw new Error('Já existe um cliente cadastrado com esse cpf.');
-  }
-  
-  const client = await connectionDB.clientes.create({
-    data: input
-  });
+async function saveClient(_, { input }) {  
+  const client = await createClientService(input);
 
   return client;
 }
+
+module.exports = { getClients, saveClient };

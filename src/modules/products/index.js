@@ -1,22 +1,22 @@
-import { 
-  GraphQLFloat, 
-  GraphQLList, 
+const {
+  GraphQLFloat,
+  GraphQLList,
   GraphQLString,
   GraphQLInt,
-  GraphQLInputObjectType, 
-} from "graphql";
+  GraphQLInputObjectType,
+} = require("graphql");
 
-import ProductType from "./types/ProductType";
-import { getProducts, saveProduct } from "./ProductLoader";
+const ProductType = require("./types/ProductType");
+const { getProducts, saveProduct } = require("./ProductLoader");
 
-export const productQueries = {
+const productQueries = {
   produtos: {
     type: new GraphQLList(ProductType),
     resolve: getProducts,
   }
 };
 
-export const productMutations = {
+const productMutations = {
   saveProduct: {
     type: ProductType,
     resolve: saveProduct,
@@ -49,3 +49,5 @@ export const productMutations = {
     }
   }
 }
+
+module.exports = { productQueries, productMutations };

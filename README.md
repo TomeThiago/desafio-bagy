@@ -25,7 +25,7 @@
 
 ## Instalação
 
-> :warning: **A aplicação tem como recomendação a utilização do docker, mas se for desejado a pode ser executado por fora do docker.**
+> :warning: **A aplicação tem como recomendação a utilização do docker, mas se for desejado a aplicação pode ser executado por fora do docker.**
 
 clone o repositório para ter o projeto em sua máquina.
 ```bash

@@ -1,11 +1,11 @@
-import { 
+const {
   GraphQLFloat,
   GraphQLInt,
   GraphQLNonNull,
   GraphQLObjectType,
-} from "graphql";
+} = require("graphql");
 
-export default new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
   name: 'ItemsType',
   fields: {
     id: {

@@ -1,23 +1,23 @@
-import { 
+const {
   GraphQLString,
   GraphQLInt,
-  GraphQLList, 
-  GraphQLInputObjectType,  
-} from 'graphql';
+  GraphQLList,
+  GraphQLInputObjectType,
+} = require('graphql');
 
-import { GraphQLDate } from 'graphql-iso-date';
+const { GraphQLDate } = require('graphql-iso-date');
 
-import ClientType from './types/ClientType';
-import { getClients, saveClient } from './ClientLoader';
+const ClientType = require('./types/ClientType');
+const { getClients, saveClient } = require('./ClientLoader');
 
-export const clientQueries = {
+const clientQueries = {
   clientes: {
     type: new GraphQLList(ClientType),
     resolve: getClients,
   }
 };
 
-export const clientMutations = {
+const clientMutations = {
   saveClient: {
     type: ClientType,
     resolve: saveClient,
@@ -65,3 +65,5 @@ export const clientMutations = {
     }
   }
 }
+
+module.exports = { clientQueries, clientMutations };

@@ -1,15 +1,16 @@
-import { connectionDB } from '../../prisma';
+const { listProductsService } = require('./services/ListProductsService');
+const { createProductService } = require('./services/CreateProductService');
 
-export async function getProducts() {
-  const products = await connectionDB.produtos.findMany();
+async function getProducts() {
+  const products = await listProductsService();
 
   return products;
 }
 
-export async function saveProduct(_, { input }) {
-  const product = await connectionDB.produtos.create({
-    data: input,
-  });
+async function saveProduct(_, { input }) {
+  const product = await createProductService(input);
 
   return product;
 }
+
+module.exports = { getProducts, saveProduct };

@@ -1,13 +1,13 @@
-import { 
+const { 
   GraphQLObjectType, 
   GraphQLNonNull, 
   GraphQLString, 
   GraphQLInt,
-} from 'graphql';
+} = require('graphql');
 
-import { GraphQLDate } from 'graphql-iso-date';
+const { GraphQLDate } = require('graphql-iso-date');
 
-export default new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
   name: 'ClientType',
   fields: {
     id: {
