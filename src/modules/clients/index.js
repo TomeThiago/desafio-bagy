@@ -14,6 +14,11 @@ const clientQueries = {
   clientes: {
     type: new GraphQLList(ClientType),
     resolve: getClients,
+    args: {
+      id: {
+        type: GraphQLInt,
+      },
+    }
   }
 };
 

@@ -13,6 +13,11 @@ const productQueries = {
   produtos: {
     type: new GraphQLList(ProductType),
     resolve: getProducts,
+    args: {
+      id: {
+        type: GraphQLInt,
+      },
+    }
   }
 };
 

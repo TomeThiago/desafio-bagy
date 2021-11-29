@@ -1,8 +1,15 @@
 const { listProductsService } = require('./services/ListProductsService');
+const { showProductService } = require('./services/ShowProductService');
 const { createProductService } = require('./services/CreateProductService');
 
-async function getProducts() {
-  const products = await listProductsService();
+async function getProducts(_, { id }) {
+  let products = [];
+  
+  if (id) {
+    products.push(await showProductService(id));
+  } else {
+    products = await listProductsService();
+  }
 
   return products;
 }

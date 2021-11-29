@@ -1,9 +1,15 @@
 const { createClientService } = require('./services/CreateClientService');
 const { listClientsService } = require('./services/ListClientsService');
+const { showClientService } = require('./services/ShowClientService');
 
-async function getClients() {
-  const clients = await listClientsService();
+async function getClients(_, { id }) {
+  let clients = [];
 
+  if (id) {
+    clients.push(await showClientService(id));
+  } else {
+    clients = await listClientsService();
+  }
   return clients;
 }
 
