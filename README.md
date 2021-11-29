@@ -72,6 +72,150 @@ Para acessar a aplicação é só acessar em um navegador de sua escolha o ender
 localhost:4000
 ```
 
+## Testes
+
+### Cliente
+
+* Consulta de Clientes
+
+```bash
+    query GetClients($clientesId: Int) {
+      clientes(id: $clientesId) {
+        id
+        nome
+        cpf
+        data_nascimento
+        email
+        bairro
+        cidade
+      }
+    }
+```
+
+* Cadastro de Cliente
+
+```bash
+    mutation SaveClient {
+      saveClient(
+        input: {
+          nome: "John Doe"
+          data_nascimento: "1985-01-01"
+          cpf: "000.000.000-00"
+          email: "johndoe@test.com"
+          cep: "00000-000"
+          rua: "Rua 1"
+          numero: 111
+          bairro: "Bairro 1"
+          cidade: "Cidade 1"
+          estado: "SP"
+          pais: "Brasil"
+        }
+      ) {
+        id
+        nome
+        data_nascimento
+        cpf
+        email
+        cep
+        rua
+        numero
+        bairro
+        cidade
+        estado
+        pais
+      }
+    }
+```
+### Produto
+
+* Consulta de Produtos
+
+```bash
+    query GetProduct($produtosId: Int) {
+      produtos(id: $produtosId) {
+        id
+        nome
+        descricao
+        imagem
+        preco
+        peso
+        quantidade
+      }
+    }
+```
+
+* Cadastro de Produto
+```bash
+    mutation SaveProduct{
+      saveProduct (
+        input: {
+          nome: "Produto 1"
+          descricao: "Descrição do produto"
+          imagem: "imagem.jpg"
+          preco: 9.99
+          peso: 0.876
+          quantidade: 10
+        }
+      ) {
+        id
+        nome
+        descricao
+        quantidade
+        preco
+        peso
+      }
+    }
+```
+### Pedido
+* Consulta de Pedidos
+```bash
+    query GetOrders($ordersId: Int) {
+      orders(id: $ordersId) {
+        id
+        parcelas
+        total
+        status
+        itens {
+          id
+          pedido_id
+          produto_id
+          preco
+        }
+      }
+    }
+```
+* Cadastro de Pedido 
+```bash
+    mutation SaveOrder{
+      saveOrder (
+        input: {
+          cliente_id: 1
+          data_criacao: "2021-11-29"
+          parcelas: 1
+          status: "Pendente"
+          itens: [
+            {
+              produto_id: 1,
+              preco: 9.99
+              quantidade: 1
+            },
+          ]
+        }
+      ) {
+        id
+        cliente_id
+        parcelas
+        total
+        status
+        itens {
+          produto_id
+          quantidade
+          preco
+          total
+        }
+      }
+    }
+```
 ## License
 
 MIT
