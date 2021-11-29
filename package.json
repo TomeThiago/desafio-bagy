@@ -21,7 +21,6 @@
     "jest": "^27.3.1",
     "jest-mock-extended": "^2.0.4",
     "nodemon": "^2.0.15",
-    "prisma": "3.5.0",
-    "sucrase": "^3.20.3"
+    "prisma": "3.5.0"
   }
 }
